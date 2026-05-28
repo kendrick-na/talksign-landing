@@ -110,9 +110,20 @@
     footer { background: var(--black); color: #fff; padding: 64px 0 48px; border-top: 1px solid rgba(255,255,255,0.1); }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
     .footer-brand h2 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
-    .footer-brand p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 24px; }
-    .biz-info { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.9; }
-    .biz-info strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .footer-tagline { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 28px; }
+    .biz-intro { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+    .biz-intro strong { color: #fff; font-weight: 700; }
+    .biz-info {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+      max-width: 480px;
+    }
+    .biz-info dt { color: rgba(255,255,255,0.45); font-weight: 500; white-space: nowrap; }
+    .biz-info dd { color: rgba(255,255,255,0.75); margin: 0; }
     .footer-links h4 { font-size: 16px; margin-bottom: 12px; }
     .footer-links a { display: block; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; margin-bottom: 8px; }
     .footer-links a:hover { color: #fff; }
@@ -209,14 +220,16 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <h2>TalkSign</h2>
-          <p>카톡에서 한 마디로 끝내는 AI 계약 자동화.</p>
-          <div class="biz-info">
-            <p>TalkSign은 <strong>인디고차일드</strong>가 운영하는 서비스입니다.</p>
-            <p><strong>상호</strong> 인디고차일드 &nbsp;|&nbsp; <strong>사업자등록번호</strong> 534-15-01132</p>
-            <p><strong>대표</strong> 나현덕 &nbsp;|&nbsp; <strong>개업일</strong> 2019.11.25</p>
-            <p><strong>주소</strong> 충북 청주시 서원구 청남로2005번길 96, 105동 709호</p>
-            <p><strong>이메일</strong> kendrick@indigochild.kr</p>
-          </div>
+          <p class="footer-tagline">카톡에서 한 마디로 끝내는 AI 계약 자동화.</p>
+          <p class="biz-intro">TalkSign은 <strong>인디고차일드</strong>가 운영하는 서비스입니다.</p>
+          <dl class="biz-info">
+            <dt>상호</dt><dd>인디고차일드</dd>
+            <dt>사업자등록번호</dt><dd>534-15-01132</dd>
+            <dt>대표</dt><dd>나현덕</dd>
+            <dt>개업일</dt><dd>2019.11.25</dd>
+            <dt>주소</dt><dd>충북 청주시 서원구 청남로2005번길 96, 105동 709호</dd>
+            <dt>이메일</dt><dd>kendrick@indigochild.kr</dd>
+          </dl>
         </div>
         <div class="footer-links">
           <h4>바로가기</h4>
