@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalkSign — 카톡에서 한 마디로 AI 계약 완료까지</title>
+  <meta name="description" content="카카오톡에서 친구처럼 부탁하면 AI 에이전트가 계약서 작성·발송·서명·추적·독촉까지 운영합니다. 한국 첫 에이전틱 계약 자동화 서비스. 운영: 인디고차일드." />
+  <link rel="icon" href="favicon.ico" />
+  <meta property="og:title" content="TalkSign — 한국 첫 에이전틱 계약 자동화" />
+  <meta property="og:description" content="카톡에서 한 마디로 AI 계약 완료까지. 운영: 인디고차일드." />
+  <meta property="og:image" content="og.png" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --robin-neon: #CCFF00;
+      --black: #0a0a0a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, 'Apple SD Gothic Neo', sans-serif;
+      color: var(--black);
+      background: #fff;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* 헤더 */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+    .brand img { width: 32px; height: 32px; border-radius: 7px; }
+    .nav-cta {
+      background: var(--black); color: var(--robin-neon);
+      padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 14px;
+      text-decoration: none; transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* 히어로 */
+    .hero { background: var(--robin-neon); padding: 96px 0 100px; }
+    .hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(0,0,0,0.25); border-radius: 999px;
+      padding: 7px 16px; font-size: 14px; font-weight: 600; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 8vw, 84px); font-weight: 800;
+      line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: clamp(17px, 2.4vw, 21px); color: rgba(0,0,0,0.72);
+      max-width: 620px; margin-bottom: 36px;
+    }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-primary {
+      background: var(--black); color: var(--robin-neon);
+      padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: opacity .15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      border: 1.5px solid var(--black); color: var(--black);
+      padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: background .15s;
+    }
+    .btn-outline:hover { background: rgba(0,0,0,0.06); }
+
+    /* 기능 섹션 */
+    .features { padding: 88px 0; }
+    .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .section-sub { font-size: 18px; color: rgba(0,0,0,0.6); margin-bottom: 56px; max-width: 600px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .card {
+      border: 1px solid rgba(0,0,0,0.1); border-radius: 16px; padding: 32px;
+      transition: border-color .15s, transform .15s;
+    }
+    .card:hover { border-color: var(--black); transform: translateY(-3px); }
+    .card .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; background: var(--robin-neon);
+      border-radius: 10px; font-weight: 800; font-size: 18px; margin-bottom: 18px;
+    }
+    .card h3 { font-size: 21px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .card p { font-size: 15px; color: rgba(0,0,0,0.62); line-height: 1.6; }
+
+    /* 흐름 */
+    .flow { background: var(--black); color: #fff; padding: 88px 0; }
+    .flow .section-title { color: #fff; }
+    .flow .section-sub { color: rgba(255,255,255,0.6); }
+    .flow-steps { display: flex; flex-wrap: wrap; gap: 16px; }
+    .flow-step {
+      flex: 1; min-width: 200px;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 28px;
+    }
+    .flow-step .step-num { color: var(--robin-neon); font-weight: 800; font-size: 14px; margin-bottom: 12px; }
+    .flow-step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .flow-step p { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+    /* 푸터 — 사업자 정보 (카카오 연관성 증빙) */
+    footer { background: var(--black); color: #fff; padding: 64px 0 48px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; }
+    .footer-brand h2 { font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+    .footer-brand p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 24px; }
+    .biz-info { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.9; }
+    .biz-info strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .footer-links h4 { font-size: 16px; margin-bottom: 12px; }
+    .footer-links a { display: block; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; margin-bottom: 8px; }
+    .footer-links a:hover { color: #fff; }
+    .copyright { margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 720px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo.png" alt="TalkSign 로고" />
+        <span>talksign</span>
+      </div>
+      <a class="nav-cta" href="#contact">도입 문의</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="badge">한국 첫 에이전틱 계약 자동화</div>
+      <h1>카톡에서 한 마디로<br />AI 계약 완료까지</h1>
+      <p>카카오톡에서 친구처럼 부탁하면 AI 에이전트가 계약서 작성·발송·서명·추적·독촉까지 라이프사이클 전체를 운영합니다. 모바일신분증으로 양측 서명, 블록체인이 영구 보관.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#features">서비스 살펴보기</a>
+        <a class="btn-outline" href="#contact">도입 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">계약, 카톡 한 마디로 끝.</h2>
+      <p class="section-sub">프리랜서·소상공인을 위한 AI 계약 비서. 작성부터 미수금 회수까지 카카오톡 안에서 자동으로 처리됩니다.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="num">1</div>
+          <h3>한국어 AI 즉시 작성</h3>
+          <p>"일러스트 외주 200만원, 6/15 납기"라고 말하면 AI가 30초 만에 표준 계약서를 작성합니다. 누락 조항도 자동 권고.</p>
+        </div>
+        <div class="card">
+          <div class="num">2</div>
+          <h3>모바일신분증 본인확인</h3>
+          <p>국가 발급 모바일신분증(OmniOne)으로 양측이 서명합니다. 공인전자서명 효력, 위변조 차단.</p>
+        </div>
+        <div class="card">
+          <div class="num">3</div>
+          <h3>블록체인 영구 보관</h3>
+          <p>계약 체결·서명·이력이 분산원장에 기록됩니다. 회사가 사라져도 계약 효력은 살아있습니다.</p>
+        </div>
+        <div class="card">
+          <div class="num">4</div>
+          <h3>미수금까지 챙겨줌</h3>
+          <p>잔금 D-7 카톡 푸시 + AI 독촉 메시지 자동 작성. 프리랜서 미수금 65%를 차단합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flow">
+    <div class="container">
+      <h2 class="section-title">카톡 한 마디 → AI가 다 합니다</h2>
+      <p class="section-sub">사용자는 도구를 다루지 않습니다. AI 에이전트가 일을 합니다.</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num">STEP 1</div>
+          <h4>카톡으로 요청</h4>
+          <p>채널에 자연어로 계약 내용을 말합니다.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">STEP 2</div>
+          <h4>AI 작성 · 발송</h4>
+          <p>계약서 초안을 만들고 상대방에게 전송합니다.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">STEP 3</div>
+          <h4>모바일신분증 서명</h4>
+          <p>양측이 본인확인 후 서명, 블록체인 기록.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">STEP 4</div>
+          <h4>미수금 자동 추적</h4>
+          <p>잔금일 알림과 AI 독촉까지 자동 운영.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>TalkSign</h2>
+          <p>카톡에서 한 마디로 끝내는 AI 계약 자동화.</p>
+          <div class="biz-info">
+            <p>TalkSign은 <strong>인디고차일드</strong>가 운영하는 서비스입니다.</p>
+            <p><strong>상호</strong> 인디고차일드 &nbsp;|&nbsp; <strong>사업자등록번호</strong> 534-15-01132</p>
+            <p><strong>대표</strong> 나현덕 &nbsp;|&nbsp; <strong>개업일</strong> 2019.11.25</p>
+            <p><strong>주소</strong> 충북 청주시 서원구 청남로2005번길 96, 105동 709호</p>
+            <p><strong>이메일</strong> kendrick@indigochild.kr</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>바로가기</h4>
+          <a href="#features">서비스 소개</a>
+          <a href="#flow">이용 흐름</a>
+          <a href="mailto:kendrick@indigochild.kr">도입 문의</a>
+        </div>
+      </div>
+      <div class="copyright">© 2026 인디고차일드 (TalkSign). All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
